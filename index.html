@@ -65,6 +65,8 @@
       width: 90%;
       max-width: 700px;
       margin: 0 auto;
+      text-align: center; /* Center-align all content */
+      padding: 20px 0;
     }
 
     /* Aspect Ratio Container */
@@ -73,7 +75,7 @@
       width: 100%;
       padding-top: 56.25%; /* 16:9 Aspect Ratio */
       background-color: black;
-      margin-top: 20px;
+      margin: 20px 0;
     }
 
     .aspect-ratio-content {
@@ -93,6 +95,10 @@
       max-height: 100%;
       object-fit: contain; /* Maintains proportions, fills black bars */
       background-color: black;
+    }
+
+    .video-description {
+      margin-top: 20px; /* Add padding between video and description */
     }
 
     /* Sections */
@@ -123,6 +129,14 @@
       align-items: center;
       aspect-ratio: 16 / 9;
       background-color: black;
+    }
+
+    /* Carousel Description */
+    .carousel-description {
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+      margin: 10px 0;
     }
 
     /* Dots */
@@ -184,37 +198,42 @@
       <!-- Carousel -->
       <div class="carousel-container">
         <div class="carousel-track" id="carousel-track">
-          <div class="carousel-slide">
+          <div class="carousel-slide" data-description="Image 1 Description">
             <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/1.png" alt="Image 1">
           </div>
-          <div class="carousel-slide">
+          <div class="carousel-slide" data-description="Image 2 Description">
             <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/2.png" alt="Image 2">
           </div>
-          <div class="carousel-slide">
+          <div class="carousel-slide" data-description="Image 3 Description">
             <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/3.jpg" alt="Image 3">
+          </div>
+          <div class="carousel-slide" data-description="Image 4 Description">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/4.jpg" alt="Image 4">
+          </div>
+          <div class="carousel-slide" data-description="Image 5 Description">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/5.jpg" alt="Image 5">
           </div>
         </div>
       </div>
+      <div class="carousel-description" id="carousel-description">Image 1 Description</div>
       <div class="carousel-dots">
         <span class="dot active" data-index="0"></span>
         <span class="dot" data-index="1"></span>
         <span class="dot" data-index="2"></span>
+        <span class="dot" data-index="3"></span>
+        <span class="dot" data-index="4"></span>
       </div>
     </section>
 
-    <!-- Read More -->
+    <!-- Other Sections -->
     <section id="read-more" class="content-wrapper">
       <h2>Read More</h2>
       <p>Explore the full story and ongoing events happening around us.</p>
     </section>
-
-    <!-- Contact Us -->
     <section id="contact" class="content-wrapper">
       <h2>Contact Us</h2>
       <p>Email us at <a href="mailto:resistge@gmail.com">resistge@gmail.com</a>.</p>
     </section>
-
-    <!-- Donate -->
     <section id="donate" class="content-wrapper">
       <h2>Donate</h2>
       <p>Your contributions help us make a difference. Support the cause today!</p>
@@ -231,6 +250,7 @@
     const sections = document.querySelectorAll('section');
     const dots = document.querySelectorAll('.dot');
     const track = document.querySelector('#carousel-track');
+    const descriptions = document.querySelectorAll('.carousel-slide');
 
     let index = 0;
 
@@ -249,6 +269,7 @@
 
     function updateCarousel() {
       track.style.transform = `translateX(-${index * 100}%)`;
+      document.getElementById('carousel-description').textContent = descriptions[index].dataset.description;
       dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
     }
 
