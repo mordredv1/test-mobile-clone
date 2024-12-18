@@ -89,6 +89,111 @@
       transform: scaleX(0);
     }
 
+    .aspect-ratio-box {
+      width: 100%;
+      max-width: 700px;
+      margin: 20px auto;
+      position: relative;
+      background-color: #000;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      overflow: hidden;
+    }
+
+    .aspect-ratio-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .carousel-slide img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      background-color: #000; /* Black bars for scaling */
+    }
+
+    /* Video Description */
+    .video-description {
+      text-align: center;
+      color: #666;
+      font-size: 16px;
+      margin: 20px 0;
+    }
+
+    /* Carousel Container */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000; /* Ensure uniform black background */
+      aspect-ratio: 16 / 9; /* Maintain fixed aspect ratio */
+    }
+
+    /* Carousel Description */
+    .carousel-description {
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+      margin: 15px 0;
+    }
+
+    /* Navigation Dots */
+    .carousel-dots {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      height: 8px;
+      width: 8px;
+      margin: 0 5px;
+      background-color: grey;
+      display: inline-block;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #d62627;
+    }
+
+    /* Bottom Bar */
+    .bottom-bar {
+      background-color: #fff;
+      color: #d62627;
+      padding: 10px;
+      text-align: center;
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
     .hidden {
       opacity: 0;
       position: absolute;
@@ -101,26 +206,72 @@
       position: relative;
       transform: translateX(0);
     }
-
-    /* Other styles omitted for brevity */
   </style>
 </head>
 <body>
   <!-- Header -->
-  <header>
-    <h1>DRAAKULA UNTOLDII</h1>
-    <div class="header-links">
-      <a href="#" class="active" data-target="home">Home</a>
-      <a href="#" data-target="read-more">Read More</a>
-      <a href="#" data-target="contact">Contact Us</a>
-      <a href="#" data-target="donate">Donate</a>
-      <div class="underline"></div>
-    </div>
-  </header>
+ <header>
+  <h1>DRAAKULA UNTOLDII</h1>
+  <div class="header-links">
+    <a href="#" class="active" data-target="home">Home</a>
+    <a href="#" data-target="read-more">Read More</a>
+    <a href="#" data-target="contact">Contact Us</a>
+    <a href="#" data-target="donate">Donate</a>
+    <div class="underline"></div>
+  </div>
+</header>
 
   <main>
     <div id="home" class="visible">
-      <!-- Home content -->
+      <!-- Video Section -->
+      <div class="aspect-ratio-box">
+        <div class="aspect-ratio-content">
+          <video autoplay muted loop playsinline>
+            <source src="your-video-file.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <!-- Video Description -->
+      <div class="video-description">
+        is yvelam sheizizga, magram dedistyvna gauchina suyvelas
+      </div>
+
+      <!-- Image Carousel -->
+      <div class="carousel-container">
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-slide" data-description="Description for Image 1">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/1.png" alt="Image 1">
+          </div>
+          <div class="carousel-slide" data-description="Description for Image 2">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/2.png" alt="Image 2">
+          </div>
+          <div class="carousel-slide" data-description="Description for Image 3">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/3.jpg" alt="Image 3">
+          </div>
+          <div class="carousel-slide" data-description="Description for Image 4">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/4.jpg" alt="Image 4">
+          </div>
+          <div class="carousel-slide" data-description="Description for Image 5">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/5.jpg" alt="Image 5">
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Description -->
+      <div class="carousel-description" id="carousel-description">
+        Description for Image 1
+      </div>
+
+      <!-- Navigation Dots -->
+      <div class="carousel-dots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+        <span class="dot" data-index="3"></span>
+        <span class="dot" data-index="4"></span>
+      </div>
     </div>
 
     <div id="read-more" class="hidden">
@@ -128,19 +279,18 @@
       <p>Explore more details here. This section provides in-depth insights and stories.</p>
     </div>
 
-    <!-- Updated Contact Us Section -->
     <div id="contact" class="hidden">
-      <h2>Contact Us</h2>
-      <a class="email-link" href="mailto:resistge@gmail.com">resistge@gmail.com</a>
-      <div class="excerpt">
-        <p>Hello!</p>
-        <p>
-          This website was brought to you by a small community of Georgian people trying to make a difference.
-        </p>
-        <p>
-          For any inquiries at all, you can reach out to us via the specified email. Reporters, photographers, or otherwise! We'll do our best to assist in whatever you might require, free of charge.
-        </p>
-      </div>
+   <main>
+    <h2>Contact Us</h2>
+    <a class="email-link" href="mailto:resistge@gmail.com">resistge@gmail.com</a>
+    <div class="excerpt">
+      <p>Hello!</p>
+      <p>
+        This website was brought to you by a small community of Georgian people trying to make a difference.
+      </p>
+      <p>
+        For any inquiries at all, you can reach out to us via the specified email. Reporters, photographers, or otherwise! We'll do our best to assist in whatever you might require, free of charge.
+      </p>
     </div>
 
     <div id="donate" class="hidden">
@@ -155,7 +305,72 @@
   </div>
 
   <script>
-    // JavaScript for tab switching and carousel handling (omitted for brevity)
+    const links = document.querySelectorAll('.header-links a');
+    const underline = document.querySelector('.underline');
+    const contents = document.querySelectorAll('main > div');
+
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // Remove active state from all links
+        links.forEach(link => link.classList.remove('active'));
+        // Add active state to clicked link
+        link.classList.add('active');
+
+        // Move underline to active link
+        const { left, width } = link.getBoundingClientRect();
+        const parentLeft = link.parentNode.getBoundingClientRect().left;
+        underline.style.transform = `translateX(${left - parentLeft}px)`;
+        underline.style.width = `${width}px`;
+
+        // Update main content
+        const targetId = link.dataset.target;
+        contents.forEach(content => {
+          if (content.id === targetId) {
+            content.classList.remove('hidden');
+            content.classList.add('visible');
+          } else {
+            content.classList.remove('visible');
+            content.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Initialize underline on the active link
+    const activeLink = document.querySelector('.header-links a.active');
+    if (activeLink) {
+      const { left, width } = activeLink.getBoundingClientRect();
+      const parentLeft = activeLink.parentNode.getBoundingClientRect().left;
+      underline.style.transform = `translateX(${left - parentLeft}px)`;
+      underline.style.width = `${width}px`;
+    }
+
+    const track = document.getElementById('carousel-track');
+    const dots = document.querySelectorAll('.dot');
+    const description = document.getElementById('carousel-description');
+    const slides = document.querySelectorAll('.carousel-slide');
+
+    let index = 0;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      description.textContent = slides[index].getAttribute('data-description');
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        index = parseInt(dot.getAttribute('data-index'));
+        updateCarousel();
+      });
+    });
+
+    setInterval(() => {
+      index = (index + 1) % slides.length;
+      updateCarousel();
+    }, 7000);
   </script>
 </body>
 </html>
