@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Georgian Resistance</title>
+  <title>Rage Against The Machine</title>
   <style>
     /* General Reset */
     * {
@@ -20,8 +20,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      max-width: 100%;
-      margin: 0 auto;
+      margin: 0;
     }
 
     main {
@@ -40,22 +39,21 @@
       font-size: 28px;
       font-weight: bold;
       text-transform: uppercase;
-      margin-bottom: 10px;
     }
 
     .header-links {
       display: flex;
       justify-content: center;
-      align-items: center;
     }
 
     .header-links a {
       color: #d62627;
       text-decoration: none;
-      margin: 0 10px;
-      font-size: 14px;
+      margin: 0 15px;
       font-weight: bold;
-      position: relative;
+      font-size: 14px;
+      padding-bottom: 5px;
+      cursor: pointer;
     }
 
     .header-links a.active {
@@ -69,13 +67,12 @@
       margin: 0 auto;
     }
 
-    /* Video Section */
+    /* Aspect Ratio Container */
     .aspect-ratio-box {
-      width: 100%;
       position: relative;
+      width: 100%;
       padding-top: 56.25%; /* 16:9 Aspect Ratio */
-      background-color: #000;
-      overflow: hidden;
+      background-color: black;
       margin-top: 20px;
     }
 
@@ -85,28 +82,33 @@
       left: 0;
       width: 100%;
       height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
     }
 
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    img, video {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain; /* Maintains proportions, fills black bars */
+      background-color: black;
     }
 
-    /* Description */
-    .video-description,
-    .carousel-description {
-      text-align: center;
-      font-size: 16px;
-      color: #666;
-      margin: 20px 0;
+    /* Sections */
+    section {
+      display: none;
+    }
+
+    section.visible {
+      display: block;
     }
 
     /* Carousel */
     .carousel-container {
       position: relative;
-      margin: 20px auto;
       overflow: hidden;
+      margin: 20px 0;
     }
 
     .carousel-track {
@@ -119,13 +121,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      aspect-ratio: 16 / 9;
+      background-color: black;
     }
 
-    .carousel-slide img {
-      width: 100%;
-      object-fit: contain;
-    }
-
+    /* Dots */
     .carousel-dots {
       text-align: center;
       margin: 10px 0;
@@ -152,62 +152,117 @@
       padding: 10px;
       text-align: center;
       font-size: 12px;
-      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <!-- Header -->
   <header>
-    <h1>The Georgian Resistance</h1>
+    <h1>Rage Against The Machine</h1>
     <div class="header-links">
-      <a href="#" class="active">Home</a>
-      <a href="#">Read More</a>
-      <a href="#">Contact Us</a>
-      <a href="#">Donate</a>
+      <a data-target="home" class="active">Home</a>
+      <a data-target="read-more">Read More</a>
+      <a data-target="contact">Contact Us</a>
+      <a data-target="donate">Donate</a>
     </div>
   </header>
 
   <!-- Main Content -->
   <main>
-    <div class="content-wrapper">
-      <!-- Video Section -->
+    <!-- Home -->
+    <section id="home" class="visible content-wrapper">
       <div class="aspect-ratio-box">
         <div class="aspect-ratio-content">
-          <video autoplay muted loop playsinline>
+          <video autoplay muted loop>
             <source src="your-video-file.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
       </div>
+      <p class="video-description">Life Before Death, Strength Before Weakness, Journey Before Destination.</p>
 
-      <!-- Description -->
-      <div class="video-description">
-        But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.
-      </div>
-
-      <!-- Image Carousel -->
+      <!-- Carousel -->
       <div class="carousel-container">
-        <div class="carousel-track">
+        <div class="carousel-track" id="carousel-track">
           <div class="carousel-slide">
-            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/5.jpg" alt="Image 5">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/1.png" alt="Image 1">
+          </div>
+          <div class="carousel-slide">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/2.png" alt="Image 2">
+          </div>
+          <div class="carousel-slide">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/3.jpg" alt="Image 3">
           </div>
         </div>
       </div>
-
-      <!-- Description -->
-      <div class="carousel-description">Description for Image 5</div>
-
-      <!-- Navigation Dots -->
       <div class="carousel-dots">
-        <span class="dot active"></span>
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
       </div>
-    </div>
+    </section>
+
+    <!-- Read More -->
+    <section id="read-more" class="content-wrapper">
+      <h2>Read More</h2>
+      <p>Explore the full story and ongoing events happening around us.</p>
+    </section>
+
+    <!-- Contact Us -->
+    <section id="contact" class="content-wrapper">
+      <h2>Contact Us</h2>
+      <p>Email us at <a href="mailto:resistge@gmail.com">resistge@gmail.com</a>.</p>
+    </section>
+
+    <!-- Donate -->
+    <section id="donate" class="content-wrapper">
+      <h2>Donate</h2>
+      <p>Your contributions help us make a difference. Support the cause today!</p>
+    </section>
   </main>
 
   <!-- Bottom Bar -->
   <div class="bottom-bar">
     &copy; 2024 Resist.ge. All rights reserved.
   </div>
+
+  <script>
+    const links = document.querySelectorAll('.header-links a');
+    const sections = document.querySelectorAll('section');
+    const dots = document.querySelectorAll('.dot');
+    const track = document.querySelector('#carousel-track');
+
+    let index = 0;
+
+    function switchSection(target) {
+      sections.forEach(section => section.classList.remove('visible'));
+      document.getElementById(target).classList.add('visible');
+    }
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        switchSection(link.dataset.target);
+      });
+    });
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        index = i;
+        updateCarousel();
+      });
+    });
+
+    setInterval(() => {
+      index = (index + 1) % dots.length;
+      updateCarousel();
+    }, 7000);
+  </script>
 </body>
 </html>
