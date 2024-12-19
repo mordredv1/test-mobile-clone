@@ -75,27 +75,24 @@
       display: block;
     }
 
-    /* Aspect Ratio Container */
-    .aspect-ratio-box {
+    /* Video Container */
+    .video-container {
       position: relative;
       width: 100%;
-      padding-top: 56.25%;
+      height: 400px; /* Fixed height for the video container */
       overflow: hidden;
       margin: 20px 0;
     }
 
-    .aspect-ratio-content {
+    .video-container video {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: auto;
       height: 100%;
-    }
-
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      min-width: 100%;
+      object-fit: cover; /* Ensures the video fills the container */
     }
 
     .video-controls {
@@ -196,14 +193,12 @@
   <main>
     <!-- Home -->
     <section id="home" class="content-wrapper visible">
-      <div class="aspect-ratio-box">
-        <div class="aspect-ratio-content">
-          <video id="main-video" autoplay muted loop playsinline preload="auto">
-            <source src="hqvideo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-controls" id="mute-toggle">Unmute</div>
-        </div>
+      <div class="video-container">
+        <video id="main-video" autoplay muted loop playsinline preload="auto">
+          <source src="hqvideo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-controls" id="mute-toggle">Unmute</div>
       </div>
       <p class="video-description"> <i>“But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.” </i> </p>
 
