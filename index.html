@@ -126,13 +126,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      aspect-ratio: 16 / 9;
       background-color: black;
     }
 
     .carousel-slide img {
       width: 100%;
-      height: auto;
-      object-fit: cover;
+      height: 100%;
+      object-fit: contain;
+      background-color: black;
     }
 
     /* Carousel Description */
@@ -178,10 +180,10 @@
   <header>
     <h1>The Georgian Resistance</h1>
     <div class="header-links">
-      <a data-target="home" class="active">Home</a>
-      <a data-target="read-more">Read More</a>
-      <a data-target="contact">Contact Us</a>
-      <a data-target="donate">Donate</a>
+      <a href="#home" data-target="home" class="active">Home</a>
+      <a href="#read-more" data-target="read-more">Read More</a>
+      <a href="#contact" data-target="contact">Contact Us</a>
+      <a href="#donate" data-target="donate">Donate</a>
     </div>
   </header>
 
@@ -289,6 +291,20 @@
       index = (index + 1) % dots.length;
       updateCarousel();
     }, 7000);
+
+    const links = document.querySelectorAll('.header-links a');
+    links.forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        document.querySelectorAll('section').forEach(section => {
+          section.classList.remove('visible');
+        });
+        document.getElementById(targetId).classList.add('visible');
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
