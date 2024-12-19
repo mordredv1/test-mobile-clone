@@ -62,12 +62,17 @@
 
     /* Content Wrapper */
     .content-wrapper {
+      display: none;
       width: 90%;
       max-width: 700px;
       margin: 0 auto;
       text-align: center;
       padding: 20px 0;
       color: #666;
+    }
+
+    .content-wrapper.visible {
+      display: block;
     }
 
     /* Aspect Ratio Container */
@@ -190,7 +195,7 @@
   <!-- Main Content -->
   <main>
     <!-- Home -->
-    <section id="home" class="visible content-wrapper">
+    <section id="home" class="content-wrapper visible">
       <div class="aspect-ratio-box">
         <div class="aspect-ratio-content">
           <video id="main-video" autoplay muted loop playsinline preload="auto">
@@ -297,7 +302,7 @@
       link.addEventListener('click', event => {
         event.preventDefault();
         const targetId = link.getAttribute('href').substring(1);
-        document.querySelectorAll('section').forEach(section => {
+        document.querySelectorAll('.content-wrapper').forEach(section => {
           section.classList.remove('visible');
         });
         document.getElementById(targetId).classList.add('visible');
