@@ -75,7 +75,7 @@
       position: relative;
       width: 100%;
       padding-top: 56.25%;
-      background-color: black;
+      overflow: hidden;
       margin: 20px 0;
     }
 
@@ -107,6 +107,69 @@
 
     .video-description {
       margin-top: 20px;
+    }
+
+    /* Carousel */
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* Carousel Description */
+    .carousel-description {
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+      margin: 10px 0;
+    }
+
+    /* Dots */
+    .carousel-dots {
+      text-align: center;
+      margin: 5px 0;
+    }
+
+    .dot {
+      height: 8px;
+      width: 8px;
+      margin: 0 5px;
+      background-color: grey;
+      display: inline-block;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #d62627;
+    }
+
+    /* Bottom Bar */
+    .bottom-bar {
+      background-color: #fff;
+      color: #d62627;
+      padding: 10px;
+      text-align: center;
+      font-size: 12px;
     }
   </style>
 </head>
@@ -203,6 +266,29 @@
       video.muted = !video.muted;
       muteToggle.textContent = video.muted ? 'Unmute' : 'Mute';
     });
+
+    const dots = document.querySelectorAll('.dot');
+    const track = document.getElementById('carousel-track');
+    const descriptions = document.querySelectorAll('.carousel-slide');
+    let index = 0;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      document.getElementById('carousel-description').textContent = descriptions[index].dataset.description;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        index = i;
+        updateCarousel();
+      });
+    });
+
+    setInterval(() => {
+      index = (index + 1) % dots.length;
+      updateCarousel();
+    }, 7000);
   </script>
 </body>
 </html>
