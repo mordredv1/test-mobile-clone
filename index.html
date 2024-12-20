@@ -31,7 +31,7 @@
     header {
       background-color: #fff;
       text-align: center;
-      padding: 20px 5%; /* Ensures padding affects all devices */
+      padding: 15px 4%; /* Slightly smaller padding */
     }
 
     header h1 {
@@ -44,15 +44,15 @@
     .header-links {
       display: flex;
       justify-content: center;
-      gap: 10px; /* Adds spacing between links */
-      flex-wrap: wrap; /* Ensures links stay on one line or wrap neatly */
+      gap: 8px; /* Reduced spacing between links */
+      flex-wrap: nowrap; /* Ensure links stay on a single line */
     }
 
     .header-links a {
       color: #d62627;
       text-decoration: none;
       font-weight: bold;
-      font-size: 12px; /* Reduced font size for smaller screens */
+      font-size: 14px; /* Standard font size */
       padding-bottom: 5px;
       cursor: pointer;
     }
@@ -68,7 +68,7 @@
       max-width: 700px;
       margin: 0 auto;
       text-align: center;
-      padding: 20px 5%; /* Affects all elements consistently */
+      padding: 15px 4%; /* Smaller padding to match header */
       color: #666;
     }
 
@@ -167,16 +167,6 @@
       padding: 10px;
       text-align: center;
       font-size: 12px;
-    }
-
-    @media (max-width: 600px) {
-      .header-links a {
-        font-size: 10px; /* Further reduces font size for very small screens */
-      }
-
-      .header-links {
-        gap: 5px; /* Reduces space between links for small screens */
-      }
     }
   </style>
 </head>
