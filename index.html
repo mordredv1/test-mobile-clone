@@ -44,14 +44,15 @@
     .header-links {
       display: flex;
       justify-content: center;
+      gap: 10px; /* Adds spacing between links */
+      flex-wrap: wrap; /* Ensures links stay on one line or wrap neatly */
     }
 
     .header-links a {
       color: #d62627;
       text-decoration: none;
-      margin: 0 15px;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 12px; /* Reduced font size for smaller screens */
       padding-bottom: 5px;
       cursor: pointer;
     }
@@ -166,6 +167,16 @@
       padding: 10px;
       text-align: center;
       font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .header-links a {
+        font-size: 10px; /* Further reduces font size for very small screens */
+      }
+
+      .header-links {
+        gap: 5px; /* Reduces space between links for small screens */
+      }
     }
   </style>
 </head>
