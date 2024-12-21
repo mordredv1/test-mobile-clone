@@ -128,13 +128,6 @@
       object-fit: contain;
     }
 
-    .carousel-description {
-      text-align: center;
-      font-size: 16px;
-      color: #666;
-      margin: 10px 0;
-    }
-
     .carousel-dots {
       text-align: center;
       margin: 5px 0;
@@ -152,6 +145,13 @@
 
     .dot.active {
       background-color: #d62627;
+    }
+
+    .carousel-description {
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+      margin-top: 10px;
     }
 
     /* Scrollable Read More Section */
@@ -202,6 +202,7 @@
   <main>
     <!-- Home -->
     <section id="home" class="content-wrapper visible">
+      <!-- Video -->
       <div class="aspect-ratio-box">
         <div class="aspect-ratio-content">
           <video autoplay muted loop>
@@ -214,27 +215,38 @@
       <!-- Carousel -->
       <div class="carousel-container">
         <div class="carousel-track" id="carousel-track">
-          <div class="carousel-slide" data-description="Protest Image 1"><img src="1.png" alt="Slide 1"></div>
-          <div class="carousel-slide" data-description="Protest Image 2"><img src="2.png" alt="Slide 2"></div>
-          <div class="carousel-slide" data-description="Protest Image 3"><img src="3.jpg" alt="Slide 3"></div>
+          <div class="carousel-slide" data-description="Protest Image 1"><img src="1.png"></div>
+          <div class="carousel-slide" data-description="Protest Image 2"><img src="2.png"></div>
+          <div class="carousel-slide" data-description="Protest Image 3"><img src="3.jpg"></div>
         </div>
       </div>
-      <div class="carousel-description" id="carousel-description">Protest Image 1</div>
       <div class="carousel-dots">
         <span class="dot active" data-index="0"></span>
         <span class="dot" data-index="1"></span>
         <span class="dot" data-index="2"></span>
       </div>
-    </section>
-
-    <!-- Read More -->
-    <section id="read-more" class="content-wrapper">
-      <h2>Read More</h2>
-      <ul>
-        <li><a href="#" target="_blank">May 14: Law Sparks Outrage</a> - Critics warn it silences dissent.</li>
-        <li><a href="#" target="_blank">May 15: Protests Erupt</a> - Police met protests with force.</li>
-      </ul>
+      <div id="carousel-description" class="carousel-description">Protest Image 1</div>
     </section>
   </main>
+
+  <!-- Bottom Bar -->
+  <div class="bottom-bar">&copy; 2024 Resist.ge. All rights reserved.</div>
+
+  <script>
+    const slides = document.querySelectorAll(".carousel-slide");
+    const dots = document.querySelectorAll(".dot");
+    const desc = document.getElementById("carousel-description");
+    let index = 0;
+
+    function showSlide(i) {
+      document.querySelector(".carousel-track").style.transform = `translateX(-${i * 100}%)`;
+      desc.textContent = slides[i].dataset.description;
+      dots.forEach(dot => dot.classList.remove("active"));
+      dots[i].classList.add("active");
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener("click", () => showSlide(i)));
+    showSlide(0);
+  </script>
 </body>
 </html>
