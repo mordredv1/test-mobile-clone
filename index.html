@@ -45,7 +45,6 @@
       display: flex;
       justify-content: center;
       gap: 8px;
-      flex-wrap: nowrap;
     }
 
     .header-links a {
@@ -76,7 +75,7 @@
       display: block;
     }
 
-    /* Aspect Ratio Container */
+    /* Video Section */
     .aspect-ratio-box {
       position: relative;
       width: 100%;
@@ -93,7 +92,7 @@
       height: 100%;
     }
 
-    video, img {
+    video {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -129,21 +128,11 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      background-color: black;
     }
 
-    /* Carousel Description */
-    .carousel-description {
-      text-align: center;
-      font-size: 16px;
-      color: #666;
-      margin: 10px 0;
-    }
-
-    /* Dots */
     .carousel-dots {
       text-align: center;
-      margin: 5px 0;
+      margin: 10px 0;
     }
 
     .dot {
@@ -160,13 +149,11 @@
       background-color: #d62627;
     }
 
-    /* Bottom Bar */
-    .bottom-bar {
-      background-color: #fff;
-      color: #d62627;
-      padding: 10px;
+    .carousel-description {
       text-align: center;
-      font-size: 12px;
+      font-size: 16px;
+      color: #666;
+      margin-top: 10px;
     }
 
     /* Read More Section */
@@ -189,6 +176,15 @@
 
     #read-more a:visited {
       color: #a51f20;
+    }
+
+    /* Bottom Bar */
+    .bottom-bar {
+      background-color: #fff;
+      color: #d62627;
+      padding: 10px;
+      text-align: center;
+      font-size: 12px;
     }
   </style>
 </head>
@@ -216,7 +212,7 @@
           </video>
         </div>
       </div>
-      <p class="video-description"> <i>“But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.” </i> </p>
+      <p class="video-description"> <i>“But you can't kill me, Lord Tyrant. I am hope.” </i> </p>
     </section>
 
     <!-- Read More -->
@@ -224,16 +220,8 @@
       <h2>Read More</h2>
       <ul>
         <li><a href="https://www.bbc.com/news/world-europe-69007465" target="_blank">May 14, 2024: Foreign Agent Law Sparks Outrage</a> - Critics warn it silences dissent.</li>
-        <li><a href="https://apnews.com/article/georgia-media-legislation-foreign-influence-protest-f42557d18f04af03cc68a372acd174f6" target="_blank">May 14-15, 2024: Protests Erupt Over New Law</a> - Thousands protest in Tbilisi.</li>
-        <li><a href="https://www.cbsnews.com/news/georgia-protests-americans-arrested-eu-russia-foreign-agents-law" target="_blank">May 15, 2024: Crackdown on Protesters</a> - Arrests of activists spark outrage.</li>
-        <li><a href="https://www.barrons.com/news/thousands-protest-alleged-election-fraud-in-georgia-fb5ccc5c" target="_blank">Oct 26, 2024: Allegations of Election Fraud</a> - Reports fuel distrust in government.</li>
+        <li><a href="https://apnews.com/article/georgia-media-legislation-foreign-influence-protest-f42557d18f04af03cc68a372acd174f6" target="_blank">May 14-15, 2024: Protests Erupt</a> - Thousands protest in Tbilisi.</li>
       </ul>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="content-wrapper">
-      <h2>Contact Us</h2>
-      <p>Email us at <a href="mailto:resistge@gmail.com">resistge@gmail.com</a>.</p>
     </section>
   </main>
 
@@ -241,5 +229,16 @@
   <div class="bottom-bar">
     &copy; 2024 Resist.ge. All rights reserved.
   </div>
+
+  <script>
+    const links = document.querySelectorAll('.header-links a');
+    links.forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        document.querySelectorAll('.content-wrapper').forEach(section => section.classList.remove('visible'));
+        document.getElementById(link.getAttribute('href').substring(1)).classList.add('visible');
+      });
+    });
+  </script>
 </body>
 </html>
