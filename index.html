@@ -59,17 +59,23 @@
     }
 
     .content-wrapper {
-      display: none;
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
       width: 90%;
       max-width: 700px;
       margin: 0 auto;
       text-align: center;
       padding: 15px 4%;
       color: #666;
+      transition: opacity 0.5s ease-in-out, visibility 0.5s;
     }
 
     .content-wrapper.visible {
-      display: block;
+      visibility: visible;
+      opacity: 1;
+      height: auto;
     }
 
     /* Video Aspect Ratio */
@@ -114,7 +120,7 @@
     .carousel-slide {
       flex: 0 0 100%;
       height: 0;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      padding-top: 56.25%;
       position: relative;
     }
 
@@ -192,8 +198,7 @@
     <!-- Read More -->
     <section id="read-more" class="content-wrapper">
       <h2>Read More</h2>
-      <p><a href="https://www.bbc.com" target="_blank" rel="noopener noreferrer"><strong>Foreign Agent Law Sparks Outrage</strong></a></p>
-      <p><a href="https://apnews.com" target="_blank" rel="noopener noreferrer"><strong>Protests Against Russian-Style Legislation</strong></a></p>
+      <p>Content here...</p>
     </section>
 
     <!-- Contact Us -->
@@ -210,20 +215,15 @@
   </main>
 
   <!-- Bottom Bar -->
-  <div class="bottom-bar">
-    &copy; 2024 Resist.ge. All rights reserved.
-  </div>
+  <div class="bottom-bar">&copy; 2024 Resist.ge. All rights reserved.</div>
 
-  <!-- JavaScript -->
   <script>
     const links = document.querySelectorAll('.header-links a');
     links.forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         const targetId = link.getAttribute('href').substring(1);
-        document.querySelectorAll('.content-wrapper').forEach(section => {
-          section.classList.remove('visible');
-        });
+        document.querySelectorAll('.content-wrapper').forEach(section => section.classList.remove('visible'));
         document.getElementById(targetId).classList.add('visible');
         links.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
