@@ -20,7 +20,6 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      margin: 0;
     }
 
     main {
@@ -45,7 +44,6 @@
       display: flex;
       justify-content: center;
       gap: 8px;
-      flex-wrap: nowrap;
     }
 
     .header-links a {
@@ -54,7 +52,6 @@
       font-weight: bold;
       font-size: 14px;
       padding-bottom: 5px;
-      cursor: pointer;
     }
 
     .header-links a.active {
@@ -76,32 +73,26 @@
       display: block;
     }
 
-    /* Aspect Ratio Container */
-    .aspect-ratio-box {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%;
-      overflow: hidden;
-      margin: 20px 0;
+    /* Scrollable Read More Section */
+    #read-more {
+      max-height: 400px;
+      overflow-y: auto;
+      text-align: left;
     }
 
-    .aspect-ratio-content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    #read-more ul {
+      list-style-type: disc;
+      padding-left: 20px;
     }
 
-    video, img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background-color: black;
+    #read-more a {
+      color: #d62627;
+      text-decoration: none;
+      font-weight: bold;
     }
 
-    .video-description {
-      margin-top: 20px;
+    #read-more a:visited {
+      color: #a51f20;
     }
 
     /* Bottom Bar */
@@ -130,26 +121,21 @@
   <main>
     <!-- Home -->
     <section id="home" class="content-wrapper visible">
-      <div class="aspect-ratio-box">
-        <div class="aspect-ratio-content">
-          <video id="main-video" autoplay muted loop playsinline preload="auto">
-            <source src="hqvideo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </div>
-      <p class="video-description"> <i>“But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.” </i> </p>
+      <p><i>“But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.”</i></p>
     </section>
 
     <!-- Read More -->
     <section id="read-more" class="content-wrapper">
       <h2>Read More</h2>
-      <div>
-        <p><a href="https://www.bbc.com/news/world-europe-69007465" target="_blank"><strong>May 14, 2024: Foreign Agent Law Sparks Outrage</strong></a> - The Georgian Parliament passed the "foreign agent" law, drawing criticism for its similarity to Russian legislation used to stifle dissent. This move was seen as a direct threat to freedom of speech and Georgia’s European aspirations.</p>
-        <p><a href="https://apnews.com/article/georgia-media-legislation-foreign-influence-protest-f42557d18f04af03cc68a372acd174f6" target="_blank"><strong>May 14-15, 2024: Mass Protests Against Russian-Style Legislation</strong></a> - Thousands protested in Tbilisi, voicing fears that the new law would erode democracy and move Georgia closer to Russian influence. The government responded with water cannons and tear gas, escalating tensions.</p>
-        <p><a href="https://www.cbsnews.com/news/georgia-protests-americans-arrested-eu-russia-foreign-agents-law" target="_blank"><strong>May 15, 2024: Crackdown on Dissent Through Arrests</strong></a> - During the protests, several activists and foreign nationals were arrested, raising alarm over the government's authoritarian tactics.</p>
-        <p><a href="https://www.barrons.com/news/thousands-protest-alleged-election-fraud-in-georgia-fb5ccc5c" target="_blank"><strong>October 26, 2024: Rigged Elections Deepen Distrust in Government</strong></a> - Allegations of election fraud, including vote-buying and intimidation, marred the parliamentary elections, fueling public outrage against the ruling Georgian Dream party.</p>
-      </div>
+      <ul>
+        <li><a href="https://www.bbc.com/news/world-europe-69007465" target="_blank">May 14, 2024: Foreign Agent Law Sparks Outrage</a> - Critics warn it mirrors Russian laws used to silence dissent.</li>
+        <li><a href="https://apnews.com/article/georgia-media-legislation-foreign-influence-protest-f42557d18f04af03cc68a372acd174f6" target="_blank">May 14-15, 2024: Protests Erupt Over New Law</a> - Thousands protest in Tbilisi, met with tear gas and water cannons.</li>
+        <li><a href="https://www.cbsnews.com/news/georgia-protests-americans-arrested-eu-russia-foreign-agents-law" target="_blank">May 15, 2024: Crackdown on Protesters</a> - Police arrest activists, sparking international concern.</li>
+        <li><a href="https://www.barrons.com/news/thousands-protest-alleged-election-fraud-in-georgia-fb5ccc5c" target="_blank">Oct 26, 2024: Allegations of Election Fraud</a> - Reports of vote-buying and intimidation fuel public outrage.</li>
+        <li><a href="https://elpais.com/internacional/2024-12-02/cientos-de-detenidos-en-georgia-tras-cuatro-noches-de-protestas-multitudinarias-contra-el-gobierno-prorruso.html" target="_blank">Dec 2, 2024: EU Talks Suspension Escalates Protests</a> - Anger mounts as EU accession talks are suspended.</li>
+        <li><a href="https://www.economist.com/europe/2024/12/19/police-brutality-is-not-stopping-georgias-protests" target="_blank">Dec 3, 2024: Police Brutality Fuels Resistance</a> - Reports of excessive force drive calls for accountability.</li>
+        <li><a href="https://www.reuters.com/world/europe/lawmakers-georgia-elect-hardline-critic-west-new-president-2024-12-14" target="_blank">Dec 14, 2024: Pro-Russian President Elected</a> - Parliament elects Mikheil Kavelashvili amid opposition boycott.</li>
+      </ul>
     </section>
 
     <!-- Contact -->
