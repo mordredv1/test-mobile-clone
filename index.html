@@ -73,6 +73,59 @@
       display: block;
     }
 
+    /* Carousel */
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      aspect-ratio: 16 / 9;
+      background-color: black;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .carousel-description {
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+      margin: 10px 0;
+    }
+
+    .carousel-dots {
+      text-align: center;
+      margin: 5px 0;
+    }
+
+    .dot {
+      height: 8px;
+      width: 8px;
+      margin: 0 5px;
+      background-color: grey;
+      display: inline-block;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #d62627;
+    }
+
     /* Scrollable Read More Section */
     #read-more {
       max-height: 400px;
@@ -121,33 +174,27 @@
   <main>
     <!-- Home -->
     <section id="home" class="content-wrapper visible">
-      <p><i>“But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.”</i></p>
+      <div class="carousel-container">
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-slide"><img src="1.png" alt="Slide 1"></div>
+          <div class="carousel-slide"><img src="2.png" alt="Slide 2"></div>
+          <div class="carousel-slide"><img src="3.jpg" alt="Slide 3"></div>
+        </div>
+      </div>
+      <div class="carousel-dots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+      </div>
     </section>
 
     <!-- Read More -->
     <section id="read-more" class="content-wrapper">
       <h2>Read More</h2>
       <ul>
-        <li><a href="https://www.bbc.com/news/world-europe-69007465" target="_blank">May 14, 2024: Foreign Agent Law Sparks Outrage</a> - Critics warn it mirrors Russian laws used to silence dissent.</li>
-        <li><a href="https://apnews.com/article/georgia-media-legislation-foreign-influence-protest-f42557d18f04af03cc68a372acd174f6" target="_blank">May 14-15, 2024: Protests Erupt Over New Law</a> - Thousands protest in Tbilisi, met with tear gas and water cannons.</li>
-        <li><a href="https://www.cbsnews.com/news/georgia-protests-americans-arrested-eu-russia-foreign-agents-law" target="_blank">May 15, 2024: Crackdown on Protesters</a> - Police arrest activists, sparking international concern.</li>
-        <li><a href="https://www.barrons.com/news/thousands-protest-alleged-election-fraud-in-georgia-fb5ccc5c" target="_blank">Oct 26, 2024: Allegations of Election Fraud</a> - Reports of vote-buying and intimidation fuel public outrage.</li>
-        <li><a href="https://elpais.com/internacional/2024-12-02/cientos-de-detenidos-en-georgia-tras-cuatro-noches-de-protestas-multitudinarias-contra-el-gobierno-prorruso.html" target="_blank">Dec 2, 2024: EU Talks Suspension Escalates Protests</a> - Anger mounts as EU accession talks are suspended.</li>
-        <li><a href="https://www.economist.com/europe/2024/12/19/police-brutality-is-not-stopping-georgias-protests" target="_blank">Dec 3, 2024: Police Brutality Fuels Resistance</a> - Reports of excessive force drive calls for accountability.</li>
-        <li><a href="https://www.reuters.com/world/europe/lawmakers-georgia-elect-hardline-critic-west-new-president-2024-12-14" target="_blank">Dec 14, 2024: Pro-Russian President Elected</a> - Parliament elects Mikheil Kavelashvili amid opposition boycott.</li>
+        <li><a href="#" target="_blank">May 14: Foreign Agent Law Sparks Outrage</a> - Critics warn it silences dissent.</li>
+        <li><a href="#" target="_blank">May 15: Protests Erupt Over New Law</a> - Police met protests with tear gas.</li>
       </ul>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="content-wrapper">
-      <h2>Contact Us</h2>
-      <p>Email us at <a href="mailto:resistge@gmail.com">resistge@gmail.com</a>.</p>
-    </section>
-
-    <!-- Donate -->
-    <section id="donate" class="content-wrapper">
-      <h2>Donate</h2>
-      <p>Your contributions help us make a difference. Support the cause today!</p>
     </section>
   </main>
 
@@ -157,19 +204,23 @@
   </div>
 
   <script>
-    const links = document.querySelectorAll('.header-links a');
-    links.forEach(link => {
-      link.addEventListener('click', event => {
-        event.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        document.querySelectorAll('.content-wrapper').forEach(section => {
-          section.classList.remove('visible');
-        });
-        document.getElementById(targetId).classList.add('visible');
-        links.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      });
-    });
+    // Carousel Script
+    let index = 0;
+    const slides = document.querySelectorAll(".carousel-slide");
+    const dots = document.querySelectorAll(".dot");
+
+    function showSlide(i) {
+      slides.forEach((slide, idx) => slide.style.display = idx === i ? "block" : "none");
+      dots.forEach(dot => dot.classList.remove("active"));
+      dots[i].classList.add("active");
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener("click", () => {
+      index = i;
+      showSlide(index);
+    }));
+
+    showSlide(index);
   </script>
 </body>
 </html>
