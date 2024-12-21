@@ -59,30 +59,21 @@
     }
 
     .content-wrapper {
-      visibility: hidden;
+      display: none;
       opacity: 0;
-      height: 0;
-      overflow: hidden;
-      width: 90%;
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 15px 4%;
-      color: #666;
-      transition: opacity 0.5s ease-in-out, visibility 0.5s;
+      transition: opacity 0.5s ease-in-out;
     }
 
     .content-wrapper.visible {
-      visibility: visible;
+      display: block;
       opacity: 1;
-      height: auto;
     }
 
-    /* Video Aspect Ratio */
+    /* Video */
     .aspect-ratio-box {
       position: relative;
       width: 100%;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      padding-top: 56.25%;
       overflow: hidden;
       margin: 20px 0;
     }
@@ -109,7 +100,8 @@
     .carousel-container {
       position: relative;
       overflow: hidden;
-      margin: 20px 0;
+      width: 100%;
+      height: auto;
     }
 
     .carousel-track {
@@ -120,7 +112,7 @@
     .carousel-slide {
       flex: 0 0 100%;
       height: 0;
-      padding-top: 56.25%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
       position: relative;
     }
 
@@ -193,42 +185,21 @@
         </div>
       </div>
       <p class="video-description">“But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.”</p>
-    </section>
 
-    <!-- Read More -->
-    <section id="read-more" class="content-wrapper">
-      <h2>Read More</h2>
-      <p>Content here...</p>
-    </section>
-
-    <!-- Contact Us -->
-    <section id="contact" class="content-wrapper">
-      <h2>Contact Us</h2>
-      <p>Email us at <a href="mailto:resistge@gmail.com">resistge@gmail.com</a>.</p>
-    </section>
-
-    <!-- Donate -->
-    <section id="donate" class="content-wrapper">
-      <h2>Donate</h2>
-      <p>Your contributions help us make a difference. Support the cause today!</p>
+      <!-- Carousel -->
+      <div class="carousel-container">
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-slide" data-description="Image 1 Description"><img src="1.png"></div>
+          <div class="carousel-slide" data-description="Image 2 Description"><img src="2.png"></div>
+          <div class="carousel-slide" data-description="Image 3 Description"><img src="3.jpg"></div>
+          <div class="carousel-slide" data-description="Image 4 Description"><img src="4.jpg"></div>
+          <div class="carousel-slide" data-description="Image 5 Description"><img src="5.jpg"></div>
+        </div>
+      </div>
+      <div class="carousel-description" id="carousel-description">Image 1 Description</div>
+      <div class="carousel-dots" id="carousel-dots"></div>
     </section>
   </main>
-
-  <!-- Bottom Bar -->
   <div class="bottom-bar">&copy; 2024 Resist.ge. All rights reserved.</div>
-
-  <script>
-    const links = document.querySelectorAll('.header-links a');
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        document.querySelectorAll('.content-wrapper').forEach(section => section.classList.remove('visible'));
-        document.getElementById(targetId).classList.add('visible');
-        links.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
