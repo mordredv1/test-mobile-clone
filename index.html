@@ -75,7 +75,7 @@
       display: block;
     }
 
-    /* Aspect Ratio for Video */
+    /* Video Aspect Ratio */
     .aspect-ratio-box {
       position: relative;
       width: 100%;
@@ -92,10 +92,14 @@
       height: 100%;
     }
 
-    video, img {
+    video {
       width: 100%;
       height: 100%;
       object-fit: contain;
+    }
+
+    .video-description {
+      margin-top: 20px;
     }
 
     /* Carousel */
@@ -122,7 +126,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
 
     .carousel-description {
@@ -176,6 +180,17 @@
   <main>
     <!-- Home -->
     <section id="home" class="content-wrapper visible">
+      <div class="aspect-ratio-box">
+        <div class="aspect-ratio-content">
+          <video id="main-video" autoplay muted loop playsinline preload="auto" title="The Georgian Resistance Video">
+            <source src="hqvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <p class="video-description">“But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.”</p>
+
+      <!-- Carousel -->
       <div class="carousel-container">
         <div class="carousel-track" id="carousel-track">
           <div class="carousel-slide" data-description="Image 1 Description"><img src="1.png"></div>
