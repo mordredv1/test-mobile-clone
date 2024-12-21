@@ -31,7 +31,7 @@
     header {
       background-color: #fff;
       text-align: center;
-      padding: 15px 4%; /* Slightly smaller padding */
+      padding: 15px 4%;
     }
 
     header h1 {
@@ -44,15 +44,15 @@
     .header-links {
       display: flex;
       justify-content: center;
-      gap: 8px; /* Reduced spacing between links */
-      flex-wrap: nowrap; /* Ensure links stay on a single line */
+      gap: 8px;
+      flex-wrap: nowrap;
     }
 
     .header-links a {
       color: #d62627;
       text-decoration: none;
       font-weight: bold;
-      font-size: 14px; /* Standard font size */
+      font-size: 14px;
       padding-bottom: 5px;
       cursor: pointer;
     }
@@ -68,7 +68,7 @@
       max-width: 700px;
       margin: 0 auto;
       text-align: center;
-      padding: 15px 4%; /* Smaller padding to match header */
+      padding: 15px 4%;
       color: #666;
     }
 
@@ -102,62 +102,6 @@
 
     .video-description {
       margin-top: 20px;
-    }
-
-    /* Carousel */
-    .carousel-container {
-      position: relative;
-      overflow: hidden;
-      margin: 20px 0;
-    }
-
-    .carousel-track {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .carousel-slide {
-      flex: 0 0 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      aspect-ratio: 16 / 9;
-      background-color: black;
-    }
-
-    .carousel-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background-color: black;
-    }
-
-    /* Carousel Description */
-    .carousel-description {
-      text-align: center;
-      font-size: 16px;
-      color: #666;
-      margin: 10px 0;
-    }
-
-    /* Dots */
-    .carousel-dots {
-      text-align: center;
-      margin: 5px 0;
-    }
-
-    .dot {
-      height: 8px;
-      width: 8px;
-      margin: 0 5px;
-      background-color: grey;
-      display: inline-block;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .dot.active {
-      background-color: #d62627;
     }
 
     /* Bottom Bar */
@@ -195,46 +139,26 @@
         </div>
       </div>
       <p class="video-description"> <i>“But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.” </i> </p>
-
-      <!-- Carousel -->
-      <div class="carousel-container">
-        <div class="carousel-track" id="carousel-track">
-          <div class="carousel-slide" data-description="Image 1 Description">
-            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/1.png" alt="Image 1" loading="lazy">
-          </div>
-          <div class="carousel-slide" data-description="Image 2 Description">
-            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/2.png" alt="Image 2" loading="lazy">
-          </div>
-          <div class="carousel-slide" data-description="Image 3 Description">
-            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/3.jpg" alt="Image 3" loading="lazy">
-          </div>
-          <div class="carousel-slide" data-description="Image 4 Description">
-            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/4.jpg" alt="Image 4" loading="lazy">
-          </div>
-          <div class="carousel-slide" data-description="Image 5 Description">
-            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/5.jpg" alt="Image 5" loading="lazy">
-          </div>
-        </div>
-      </div>
-      <div class="carousel-description" id="carousel-description">Image 1 Description</div>
-      <div class="carousel-dots">
-        <span class="dot active" data-index="0"></span>
-        <span class="dot" data-index="1"></span>
-        <span class="dot" data-index="2"></span>
-        <span class="dot" data-index="3"></span>
-        <span class="dot" data-index="4"></span>
-      </div>
     </section>
 
-    <!-- Other Sections -->
+    <!-- Read More -->
     <section id="read-more" class="content-wrapper">
       <h2>Read More</h2>
-      <p>Explore the full story and ongoing events happening around us.</p>
+      <div>
+        <p><a href="https://www.bbc.com/news/world-europe-69007465" target="_blank"><strong>May 14, 2024: Foreign Agent Law Sparks Outrage</strong></a> - The Georgian Parliament passed the "foreign agent" law, drawing criticism for its similarity to Russian legislation used to stifle dissent. This move was seen as a direct threat to freedom of speech and Georgia’s European aspirations.</p>
+        <p><a href="https://apnews.com/article/georgia-media-legislation-foreign-influence-protest-f42557d18f04af03cc68a372acd174f6" target="_blank"><strong>May 14-15, 2024: Mass Protests Against Russian-Style Legislation</strong></a> - Thousands protested in Tbilisi, voicing fears that the new law would erode democracy and move Georgia closer to Russian influence. The government responded with water cannons and tear gas, escalating tensions.</p>
+        <p><a href="https://www.cbsnews.com/news/georgia-protests-americans-arrested-eu-russia-foreign-agents-law" target="_blank"><strong>May 15, 2024: Crackdown on Dissent Through Arrests</strong></a> - During the protests, several activists and foreign nationals were arrested, raising alarm over the government's authoritarian tactics.</p>
+        <p><a href="https://www.barrons.com/news/thousands-protest-alleged-election-fraud-in-georgia-fb5ccc5c" target="_blank"><strong>October 26, 2024: Rigged Elections Deepen Distrust in Government</strong></a> - Allegations of election fraud, including vote-buying and intimidation, marred the parliamentary elections, fueling public outrage against the ruling Georgian Dream party.</p>
+      </div>
     </section>
+
+    <!-- Contact -->
     <section id="contact" class="content-wrapper">
       <h2>Contact Us</h2>
       <p>Email us at <a href="mailto:resistge@gmail.com">resistge@gmail.com</a>.</p>
     </section>
+
+    <!-- Donate -->
     <section id="donate" class="content-wrapper">
       <h2>Donate</h2>
       <p>Your contributions help us make a difference. Support the cause today!</p>
@@ -247,8 +171,6 @@
   </div>
 
   <script>
-    const video = document.getElementById('main-video');
-
     const links = document.querySelectorAll('.header-links a');
     links.forEach(link => {
       link.addEventListener('click', event => {
