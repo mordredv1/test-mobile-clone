@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +32,7 @@
     header {
       background-color: #fff;
       text-align: center;
-      padding: 15px 4%;
+      padding: 15px 4%; /* Slightly smaller padding */
     }
 
     header h1 {
@@ -44,14 +45,15 @@
     .header-links {
       display: flex;
       justify-content: center;
-      gap: 8px;
+      gap: 8px; /* Reduced spacing between links */
+      flex-wrap: nowrap; /* Ensure links stay on a single line */
     }
 
     .header-links a {
       color: #d62627;
       text-decoration: none;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 14px; /* Standard font size */
       padding-bottom: 5px;
       cursor: pointer;
     }
@@ -67,7 +69,7 @@
       max-width: 700px;
       margin: 0 auto;
       text-align: center;
-      padding: 15px 4%;
+      padding: 15px 4%; /* Smaller padding to match header */
       color: #666;
     }
 
@@ -75,7 +77,7 @@
       display: block;
     }
 
-    /* Video Section */
+    /* Aspect Ratio Container */
     .aspect-ratio-box {
       position: relative;
       width: 100%;
@@ -92,7 +94,7 @@
       height: 100%;
     }
 
-    video {
+    video, img {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -128,11 +130,21 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+      background-color: black;
     }
 
+    /* Carousel Description */
+    .carousel-description {
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+      margin: 10px 0;
+    }
+
+    /* Dots */
     .carousel-dots {
       text-align: center;
-      margin: 10px 0;
+      margin: 5px 0;
     }
 
     .dot {
@@ -147,35 +159,6 @@
 
     .dot.active {
       background-color: #d62627;
-    }
-
-    .carousel-description {
-      text-align: center;
-      font-size: 16px;
-      color: #666;
-      margin-top: 10px;
-    }
-
-    /* Read More Section */
-    #read-more {
-      max-height: 400px;
-      overflow-y: auto;
-      text-align: left;
-    }
-
-    #read-more ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
-
-    #read-more a {
-      color: #d62627;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    #read-more a:visited {
-      color: #a51f20;
     }
 
     /* Bottom Bar */
@@ -212,16 +195,50 @@
           </video>
         </div>
       </div>
-      <p class="video-description"> <i>“But you can't kill me, Lord Tyrant. I am hope.” </i> </p>
+      <p class="video-description"> <i>“But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.” </i> </p>
+
+      <!-- Carousel -->
+      <div class="carousel-container">
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-slide" data-description="Image 1 Description">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/1.png" alt="Image 1" loading="lazy">
+          </div>
+          <div class="carousel-slide" data-description="Image 2 Description">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/2.png" alt="Image 2" loading="lazy">
+          </div>
+          <div class="carousel-slide" data-description="Image 3 Description">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/3.jpg" alt="Image 3" loading="lazy">
+          </div>
+          <div class="carousel-slide" data-description="Image 4 Description">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/4.jpg" alt="Image 4" loading="lazy">
+          </div>
+          <div class="carousel-slide" data-description="Image 5 Description">
+            <img src="https://raw.githubusercontent.com/mordredv1/test-mobile/main/5.jpg" alt="Image 5" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-description" id="carousel-description">Image 1 Description</div>
+      <div class="carousel-dots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+        <span class="dot" data-index="3"></span>
+        <span class="dot" data-index="4"></span>
+      </div>
     </section>
 
-    <!-- Read More -->
+    <!-- Other Sections -->
     <section id="read-more" class="content-wrapper">
       <h2>Read More</h2>
-      <ul>
-        <li><a href="https://www.bbc.com/news/world-europe-69007465" target="_blank">May 14, 2024: Foreign Agent Law Sparks Outrage</a> - Critics warn it silences dissent.</li>
-        <li><a href="https://apnews.com/article/georgia-media-legislation-foreign-influence-protest-f42557d18f04af03cc68a372acd174f6" target="_blank">May 14-15, 2024: Protests Erupt</a> - Thousands protest in Tbilisi.</li>
-      </ul>
+      <p>Explore the full story and ongoing events happening around us.</p>
+    </section>
+    <section id="contact" class="content-wrapper">
+      <h2>Contact Us</h2>
+      <p>Email us at <a href="mailto:resistge@gmail.com">resistge@gmail.com</a>.</p>
+    </section>
+    <section id="donate" class="content-wrapper">
+      <h2>Donate</h2>
+      <p>Your contributions help us make a difference. Support the cause today!</p>
     </section>
   </main>
 
@@ -231,12 +248,19 @@
   </div>
 
   <script>
+    const video = document.getElementById('main-video');
+
     const links = document.querySelectorAll('.header-links a');
     links.forEach(link => {
       link.addEventListener('click', event => {
         event.preventDefault();
-        document.querySelectorAll('.content-wrapper').forEach(section => section.classList.remove('visible'));
-        document.getElementById(link.getAttribute('href').substring(1)).classList.add('visible');
+        const targetId = link.getAttribute('href').substring(1);
+        document.querySelectorAll('.content-wrapper').forEach(section => {
+          section.classList.remove('visible');
+        });
+        document.getElementById(targetId).classList.add('visible');
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
       });
     });
   </script>
