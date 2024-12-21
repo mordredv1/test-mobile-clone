@@ -128,6 +128,13 @@
       object-fit: contain;
     }
 
+    .carousel-description {
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+      margin: 10px 0;
+    }
+
     .carousel-dots {
       text-align: center;
       margin: 5px 0;
@@ -195,12 +202,10 @@
   <main>
     <!-- Home -->
     <section id="home" class="content-wrapper visible">
-      <!-- Video Section -->
       <div class="aspect-ratio-box">
         <div class="aspect-ratio-content">
-          <video id="main-video" autoplay muted loop playsinline preload="auto">
+          <video autoplay muted loop>
             <source src="hqvideo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
           </video>
         </div>
       </div>
@@ -209,19 +214,16 @@
       <!-- Carousel -->
       <div class="carousel-container">
         <div class="carousel-track" id="carousel-track">
-          <div class="carousel-slide"><img src="1.png" alt="Slide 1"></div>
-          <div class="carousel-slide"><img src="2.png" alt="Slide 2"></div>
-          <div class="carousel-slide"><img src="3.jpg" alt="Slide 3"></div>
-          <div class="carousel-slide"><img src="4.jpg" alt="Slide 4"></div>
-          <div class="carousel-slide"><img src="5.jpg" alt="Slide 5"></div>
+          <div class="carousel-slide" data-description="Protest Image 1"><img src="1.png" alt="Slide 1"></div>
+          <div class="carousel-slide" data-description="Protest Image 2"><img src="2.png" alt="Slide 2"></div>
+          <div class="carousel-slide" data-description="Protest Image 3"><img src="3.jpg" alt="Slide 3"></div>
         </div>
       </div>
+      <div class="carousel-description" id="carousel-description">Protest Image 1</div>
       <div class="carousel-dots">
         <span class="dot active" data-index="0"></span>
         <span class="dot" data-index="1"></span>
         <span class="dot" data-index="2"></span>
-        <span class="dot" data-index="3"></span>
-        <span class="dot" data-index="4"></span>
       </div>
     </section>
 
@@ -229,28 +231,10 @@
     <section id="read-more" class="content-wrapper">
       <h2>Read More</h2>
       <ul>
-        <li><a href="#" target="_blank">May 14: Foreign Agent Law Sparks Outrage</a> - Critics warn it silences dissent.</li>
+        <li><a href="#" target="_blank">May 14: Law Sparks Outrage</a> - Critics warn it silences dissent.</li>
+        <li><a href="#" target="_blank">May 15: Protests Erupt</a> - Police met protests with force.</li>
       </ul>
     </section>
   </main>
-
-  <!-- Bottom Bar -->
-  <div class="bottom-bar">
-    &copy; 2024 Resist.ge. All rights reserved.
-  </div>
-
-  <script>
-    const links = document.querySelectorAll('.header-links a');
-    links.forEach(link => {
-      link.addEventListener('click', event => {
-        event.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        document.querySelectorAll('.content-wrapper').forEach(section => {
-          section.classList.remove('visible');
-        });
-        document.getElementById(targetId).classList.add('visible');
-      });
-    });
-  </script>
 </body>
 </html>
