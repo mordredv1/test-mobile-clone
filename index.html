@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Georgian Resistance</title>
-  <meta name="description" content="Explore the Georgian Resistance movement against authoritarianism. Learn about protests, election fraud, and the fight for democracy in Georgia.">
   <style>
     /* General Reset */
     * {
@@ -27,7 +26,6 @@
       flex: 1;
     }
 
-    /* Header */
     header {
       background-color: #fff;
       text-align: center;
@@ -60,7 +58,6 @@
       border-bottom: 2px solid #d62627;
     }
 
-    /* Sections */
     .content-wrapper {
       display: none;
       width: 90%;
@@ -115,9 +112,10 @@
     }
 
     .carousel-slide {
+      flex: 0 0 100%;
+      height: 0;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
       position: relative;
-      width: 100%;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio Fallback */
     }
 
     .carousel-slide img {
@@ -126,7 +124,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
     }
 
     .carousel-description {
@@ -169,10 +167,10 @@
   <header>
     <h1>The Georgian Resistance</h1>
     <div class="header-links">
-      <a href="#home" data-target="home" class="active">Home</a>
-      <a href="#read-more" data-target="read-more">Read More</a>
-      <a href="#contact" data-target="contact">Contact Us</a>
-      <a href="#donate" data-target="donate">Donate</a>
+      <a href="#home" class="active">Home</a>
+      <a href="#read-more">Read More</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#donate">Donate</a>
     </div>
   </header>
 
@@ -182,7 +180,7 @@
     <section id="home" class="content-wrapper visible">
       <div class="aspect-ratio-box">
         <div class="aspect-ratio-content">
-          <video id="main-video" autoplay muted loop playsinline preload="auto" title="The Georgian Resistance Video">
+          <video id="main-video" autoplay muted loop playsinline preload="auto">
             <source src="hqvideo.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -203,27 +201,48 @@
       <div class="carousel-description" id="carousel-description">Image 1 Description</div>
       <div class="carousel-dots" id="carousel-dots"></div>
     </section>
-
-    <!-- Read More -->
-    <section id="read-more" class="content-wrapper">
-      <h2>Read More</h2>
-      <p><a href="https://www.bbc.com" target="_blank" rel="noopener noreferrer"><strong>Foreign Agent Law Sparks Outrage</strong></a></p>
-    </section>
   </main>
 
-  <div class="bottom-bar">&copy; 2024 Resist.ge. All rights reserved.</div>
+  <!-- Bottom Bar -->
+  <div class="bottom-bar">
+    &copy; 2024 Resist.ge. All rights reserved.
+  </div>
 
   <script>
-    const links = document.querySelectorAll('.header-links a');
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelectorAll('.content-wrapper').forEach(s => s.classList.remove('visible'));
-        document.getElementById(link.getAttribute('href').substring(1)).classList.add('visible');
-        links.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      });
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dotsContainer = document.getElementById('carousel-dots');
+    const description = document.getElementById('carousel-description');
+    let index = 0;
+    let timer;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.classList.add('dot');
+      dot.dataset.index = i;
+      dotsContainer.appendChild(dot);
     });
+
+    const dots = document.querySelectorAll('.dot');
+    function updateCarousel(i) {
+      document.getElementById('carousel-track').style.transform = `translateX(-${i * 100}%)`;
+      description.textContent = slides[i].dataset.description;
+      dots.forEach(d => d.classList.remove('active'));
+      dots[i].classList.add('active');
+      index = i;
+    }
+
+    function autoScroll() {
+      timer = setInterval(() => updateCarousel((index + 1) % slides.length), 7000);
+    }
+
+    dots.forEach(dot => dot.addEventListener('click', () => {
+      clearInterval(timer);
+      updateCarousel(Number(dot.dataset.index));
+      autoScroll();
+    }));
+
+    updateCarousel(0);
+    autoScroll();
   </script>
 </body>
 </html>
