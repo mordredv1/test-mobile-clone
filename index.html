@@ -46,7 +46,6 @@
       display: flex;
       justify-content: center;
       gap: 8px;
-      flex-wrap: nowrap;
     }
 
     .header-links a {
@@ -118,22 +117,17 @@
     }
 
     .carousel-slide {
-      position: relative;
-      padding-top: 56.25%; /* Fallback for browsers without aspect-ratio support */
+      flex: 0 0 100%;
+      aspect-ratio: 16 / 9;
       background-color: black;
     }
 
     .carousel-slide img {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       object-fit: contain;
-      background-color: black;
     }
 
-    /* Carousel Description */
     .carousel-description {
       text-align: center;
       font-size: 16px;
@@ -141,7 +135,6 @@
       margin: 10px 0;
     }
 
-    /* Dots */
     .carousel-dots {
       text-align: center;
       margin: 5px 0;
@@ -164,7 +157,7 @@
     /* Bottom Bar */
     .bottom-bar {
       background-color: #fff;
-      color: #b01e1f; /* Improved contrast */
+      color: #b01e1f;
       padding: 10px;
       text-align: center;
       font-size: 12px;
@@ -195,41 +188,51 @@
           </video>
         </div>
       </div>
-      <p class="video-description"> <i>“But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.” </i> </p>
+      <p class="video-description">“But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.”</p>
 
       <!-- Carousel -->
       <div class="carousel-container">
         <div class="carousel-track" id="carousel-track">
-          <!-- Images -->
+          <div class="carousel-slide" data-description="Image 1 Description">
+            <img src="1.png" alt="Image 1">
+          </div>
+          <div class="carousel-slide" data-description="Image 2 Description">
+            <img src="2.png" alt="Image 2">
+          </div>
         </div>
       </div>
       <div class="carousel-description" id="carousel-description">Image 1 Description</div>
       <div class="carousel-dots">
-        <!-- Dots -->
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
       </div>
     </section>
 
     <!-- Read More -->
     <section id="read-more" class="content-wrapper">
       <h2>Read More</h2>
-      <div>
-        <p><a href="https://www.bbc.com/news/world-europe-69007465" target="_blank" rel="noopener noreferrer"><strong>May 14, 2024: Foreign Agent Law Sparks Outrage</strong></a> - The Georgian Parliament passed the "foreign agent" law...</p>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="content-wrapper">
-      <h2>Contact Us</h2>
-      <p>Email us at <a href="mailto:resistge@gmail.com">resistge@gmail.com</a>.</p>
-    </section>
-
-    <!-- Donate -->
-    <section id="donate" class="content-wrapper">
-      <h2>Donate</h2>
-      <p>Your contributions help us make a difference. Support the cause today!</p>
+      <p>Explore the Georgian Resistance's fight for democracy and freedom.</p>
     </section>
   </main>
 
   <!-- Bottom Bar -->
   <div class="bottom-bar">
-    &copy; 2024 Resist.ge
+    &copy; 2024 Resist.ge. All rights reserved.
+  </div>
+
+  <script>
+    // Section Switching
+    const links = document.querySelectorAll('.header-links a');
+    links.forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        document.querySelectorAll('.content-wrapper').forEach(section => section.classList.remove('visible'));
+        document.getElementById(targetId).classList.add('visible');
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
