@@ -27,39 +27,53 @@
       flex: 1;
     }
 
-    /* Header */
-    header {
-      background-color: #fff;
-      text-align: center;
-      padding: 15px 4%; /* Slightly smaller padding */
-    }
+  <!-- Header -->
+<header>
+  <h1>The Georgian Resistance</h1>
+  <div class="header-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="readmore.html">Read More</a>
+    <a href="#contact">Contact Us</a>
+    <a href="#donate">Donate</a>
+  </div>
+</header>
 
-    header h1 {
-      color: #d62627;
-      font-size: 28px;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
+<style>
+  /* Header */
+  header {
+    background-color: #fff;
+    text-align: center;
+    padding: 15px 4%; /* Slightly smaller padding */
+  }
 
-    .header-links {
-      display: flex;
-      justify-content: center;
-      gap: 8px; /* Reduced spacing between links */
-      flex-wrap: nowrap; /* Ensure links stay on a single line */
-    }
+  header h1 {
+    color: #d62627;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 
-    .header-links a {
-      color: #d62627;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px; /* Standard font size */
-      padding-bottom: 5px;
-      cursor: pointer;
-    }
+  .header-links {
+    display: flex;
+    justify-content: center;
+    gap: 8px; /* Reduced spacing between links */
+    flex-wrap: nowrap; /* Ensure links stay on a single line */
+  }
 
-    .header-links a.active {
-      border-bottom: 2px solid #d62627;
-    }
+  .header-links a {
+    color: #d62627;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px; /* Standard font size */
+    padding-bottom: 5px;
+    cursor: pointer;
+  }
+
+  .header-links a.active {
+    border-bottom: 2px solid #d62627;
+  }
+</style>
+
 
     /* Content Wrapper */
     .content-wrapper {
