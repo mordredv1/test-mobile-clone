@@ -73,6 +73,34 @@
       display: block;
     }
 
+    /* Video Section */
+    .aspect-ratio-box {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .aspect-ratio-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: black;
+    }
+
+    .video-description {
+      margin-top: 20px;
+    }
+
     /* Carousel */
     .carousel-container {
       position: relative;
@@ -98,13 +126,6 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-    }
-
-    .carousel-description {
-      text-align: center;
-      font-size: 16px;
-      color: #666;
-      margin: 10px 0;
     }
 
     .carousel-dots {
@@ -174,17 +195,33 @@
   <main>
     <!-- Home -->
     <section id="home" class="content-wrapper visible">
+      <!-- Video Section -->
+      <div class="aspect-ratio-box">
+        <div class="aspect-ratio-content">
+          <video id="main-video" autoplay muted loop playsinline preload="auto">
+            <source src="hqvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <p class="video-description"><i>“But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.”</i></p>
+
+      <!-- Carousel -->
       <div class="carousel-container">
         <div class="carousel-track" id="carousel-track">
           <div class="carousel-slide"><img src="1.png" alt="Slide 1"></div>
           <div class="carousel-slide"><img src="2.png" alt="Slide 2"></div>
           <div class="carousel-slide"><img src="3.jpg" alt="Slide 3"></div>
+          <div class="carousel-slide"><img src="4.jpg" alt="Slide 4"></div>
+          <div class="carousel-slide"><img src="5.jpg" alt="Slide 5"></div>
         </div>
       </div>
       <div class="carousel-dots">
         <span class="dot active" data-index="0"></span>
         <span class="dot" data-index="1"></span>
         <span class="dot" data-index="2"></span>
+        <span class="dot" data-index="3"></span>
+        <span class="dot" data-index="4"></span>
       </div>
     </section>
 
@@ -193,7 +230,6 @@
       <h2>Read More</h2>
       <ul>
         <li><a href="#" target="_blank">May 14: Foreign Agent Law Sparks Outrage</a> - Critics warn it silences dissent.</li>
-        <li><a href="#" target="_blank">May 15: Protests Erupt Over New Law</a> - Police met protests with tear gas.</li>
       </ul>
     </section>
   </main>
@@ -204,23 +240,17 @@
   </div>
 
   <script>
-    // Carousel Script
-    let index = 0;
-    const slides = document.querySelectorAll(".carousel-slide");
-    const dots = document.querySelectorAll(".dot");
-
-    function showSlide(i) {
-      slides.forEach((slide, idx) => slide.style.display = idx === i ? "block" : "none");
-      dots.forEach(dot => dot.classList.remove("active"));
-      dots[i].classList.add("active");
-    }
-
-    dots.forEach((dot, i) => dot.addEventListener("click", () => {
-      index = i;
-      showSlide(index);
-    }));
-
-    showSlide(index);
+    const links = document.querySelectorAll('.header-links a');
+    links.forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        document.querySelectorAll('.content-wrapper').forEach(section => {
+          section.classList.remove('visible');
+        });
+        document.getElementById(targetId).classList.add('visible');
+      });
+    });
   </script>
 </body>
 </html>
