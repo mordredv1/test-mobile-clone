@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Georgian Resistance - Read More</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #fff;
+      color: #d62627;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* Header */
+    header {
+      background-color: #fff;
+      text-align: center;
+      padding: 15px 4%; /* Slightly smaller padding */
+    }
+
+    header h1 {
+      color: #d62627;
+      font-size: 28px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .header-links {
+      display: flex;
+      justify-content: center;
+      gap: 8px; /* Reduced spacing between links */
+      flex-wrap: nowrap; /* Ensure links stay on a single line */
+    }
+
+    .header-links a {
+      color: #d62627;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px; /* Standard font size */
+      padding-bottom: 5px;
+      cursor: pointer;
+    }
+
+    .header-links a.active {
+      border-bottom: 2px solid #d62627;
+    }
+
+    /* Content Wrapper */
+    .content-wrapper {
+      width: 90%;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 15px 4%; /* Smaller padding to match header */
+      color: #666;
+    }
+
+    /* Bottom Bar */
+    .bottom-bar {
+      background-color: #fff;
+      color: #d62627;
+      padding: 10px;
+      text-align: center;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>The Georgian Resistance</h1>
+    <div class="header-links">
+      <a href="index.html#home">Home</a>
+      <a href="read-more.html" class="active">Read More</a>
+      <a href="index.html#contact">Contact Us</a>
+      <a href="index.html#donate">Donate</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="content-wrapper">
+      <h2>Read More About the Georgian Resistance</h2>
+      <p>The Georgian Resistance was a pivotal movement dedicated to preserving freedom and justice. Spanning years of struggle, its members showed immense bravery and resilience. This section delves deeper into the history, key events, and prominent figures that defined this movement.</p>
+
+      <p>From clandestine meetings to open protests, the Georgian Resistance symbolized hope in times of darkness. Learn more about their strategies, sacrifices, and victories.</p>
+
+      <p>Stay tuned for more updates and stories highlighting their journey.</p>
+    </section>
+  </main>
+
+  <!-- Bottom Bar -->
+  <div class="bottom-bar">
+    &copy; 2024 Resist.ge. All rights reserved.
+  </div>
+</body>
+</html>
