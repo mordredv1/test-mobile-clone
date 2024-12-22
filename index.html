@@ -132,18 +132,10 @@
       background-color: black;
     }
 
-    /* Carousel Description */
-    .carousel-description {
-      text-align: center;
-      font-size: 16px;
-      color: #666;
-      margin: 10px 0;
-    }
-
-    /* Dots */
+    /* Carousel Dots */
     .carousel-dots {
       text-align: center;
-      margin: 5px 0;
+      margin: 10px 0;
     }
 
     .dot {
@@ -158,6 +150,14 @@
 
     .dot.active {
       background-color: #d62627;
+    }
+
+    /* Carousel Description */
+    .carousel-description {
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+      margin: 10px 0;
     }
 
     /* Bottom Bar */
@@ -184,7 +184,6 @@
 
   <!-- Main Content -->
   <main>
-    <!-- Home -->
     <section id="home" class="content-wrapper visible">
       <div class="aspect-ratio-box">
         <div class="aspect-ratio-content">
@@ -210,18 +209,19 @@
           <div class="carousel-slide" data-description="Image 3 Description">
             <img src="3.jpg" alt="Image 3" loading="lazy">
           </div>
+          <div class="carousel-slide" data-description="Image 4 Description">
+            <img src="4.jpg" alt="Image 4" loading="lazy">
+          </div>
+          <div class="carousel-slide" data-description="Image 5 Description">
+            <img src="5.jpg" alt="Image 5" loading="lazy">
+          </div>
         </div>
       </div>
+      <div class="carousel-dots" id="carousel-dots"></div>
       <div class="carousel-description" id="carousel-description">Image 1 Description</div>
-      <div class="carousel-dots">
-        <span class="dot active" data-index="0"></span>
-        <span class="dot" data-index="1"></span>
-        <span class="dot" data-index="2"></span>
-      </div>
     </section>
   </main>
 
-  <!-- Bottom Bar -->
   <div class="bottom-bar">
     &copy; 2024 Resist.ge. All rights reserved.
   </div>
@@ -230,23 +230,41 @@
   <script>
     const track = document.getElementById('carousel-track');
     const slides = Array.from(track.children);
-    const dots = Array.from(document.querySelectorAll('.dot'));
+    const dotsContainer = document.getElementById('carousel-dots');
     const description = document.getElementById('carousel-description');
     let currentIndex = 0;
+    let timer;
 
-    function updateCarousel(index) {
+    slides.forEach((_, index) => {
+      const dot = document.createElement('span');
+      dot.classList.add('dot');
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => updateCarousel(index, true));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsContainer.children);
+
+    function updateCarousel(index, resetTimer = false) {
       track.style.transform = `translateX(-${index * 100}%)`;
       dots.forEach(dot => dot.classList.remove('active'));
       dots[index].classList.add('active');
       description.textContent = slides[index].getAttribute('data-description');
+      currentIndex = index;
+      if (resetTimer) resetAutoScroll();
     }
 
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        currentIndex = index;
-        updateCarousel(index);
-      });
-    });
+    function autoScroll() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel(currentIndex);
+    }
+
+    function resetAutoScroll() {
+      clearInterval(timer);
+      timer = setInterval(autoScroll, 7000);
+    }
+
+    resetAutoScroll();
   </script>
 </body>
 </html>
