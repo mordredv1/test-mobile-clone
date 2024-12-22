@@ -79,7 +79,14 @@
       border-radius: 5px;
       display: inline-block;
       cursor: pointer;
-      user-select: all;
+      font-size: 14px;
+      overflow-x: auto; /* Allows scrolling if text overflows */
+      white-space: nowrap; /* Prevents wrapping */
+      width: 100%;
+      max-width: 100%;
+    }
+    .copyable::-webkit-scrollbar {
+      height: 5px; /* Small scrollbar for mobile */
     }
     .bottom-bar {
       background-color: #fff;
@@ -111,13 +118,19 @@
           Instead, you can support <a href="https://www.lightmvmnt.org/%E1%83%93%E1%83%9D%E1%83%9C%E1%83%90%E1%83%AA%E1%83%98%E1%83%90-donation" target="_blank">The Light Movement</a>, which actively supports protestors in need.
         </p>
         <p>
-          You can also donate directly using the following details:
+          You can donate directly using the following details:
         </p>
       </div>
       <div class="donation-details">
         <p>PayPal: <span class="copyable" onclick="copyText('@sjajanidze')">@sjajanidze</span></p>
-        <p>Polygon USDT (Network - MATIC): <span class="copyable" onclick="copyText('0x882393586a484a4c83f38bdf922171b276ea8e8f')">0x882393586a484a4c83f38bdf922171b276ea8e8f</span></p>
-        <p>USDT (Network: BSC BEP20): <span class="copyable" onclick="copyText('0x882393586a484a4c83f38bdf922171b276ea8e8f')">0x882393586a484a4c83f38bdf922171b276ea8e8f</span></p>
+        <p>Polygon USDT (Network - MATIC):</p>
+        <div class="copyable" onclick="copyText('0x882393586a484a4c83f38bdf922171b276ea8e8f')">
+          0x882393586a484a4c83f38bdf922171b276ea8e8f
+        </div>
+        <p>USDT (Network: BSC BEP20):</p>
+        <div class="copyable" onclick="copyText('0x882393586a484a4c83f38bdf922171b276ea8e8f')">
+          0x882393586a484a4c83f38bdf922171b276ea8e8f
+        </div>
       </div>
     </section>
   </main>
