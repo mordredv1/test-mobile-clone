@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Georgian Resistance - Donate</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #fff;
+      color: #666;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+      flex: 1;
+    }
+    header {
+      background-color: #fff;
+      text-align: center;
+      padding: 15px 4%;
+    }
+    header h1 {
+      color: #d62627;
+      font-size: 28px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .header-links {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: nowrap;
+    }
+    .header-links a {
+      color: #d62627;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      padding-bottom: 5px;
+      cursor: pointer;
+    }
+    .header-links a.active {
+      border-bottom: 2px solid #d62627;
+    }
+    .content-wrapper {
+      width: 90%;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: left;
+      padding: 15px 4%;
+    }
+    .donation-section {
+      margin: 20px 0;
+      color: #666;
+    }
+    .donation-section a {
+      color: #d62627;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .donation-details {
+      margin-top: 15px;
+    }
+    .donation-details p {
+      margin-bottom: 10px;
+    }
+    .copyable {
+      background-color: #f1f1f1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      display: inline-block;
+      cursor: pointer;
+      user-select: all;
+    }
+    .bottom-bar {
+      background-color: #fff;
+      color: #d62627;
+      padding: 10px;
+      text-align: center;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Georgian Resistance</h1>
+    <div class="header-links">
+      <a href="index.html">Home</a>
+      <a href="readmore.html">Read More</a>
+      <a href="index.html#contact">Contact Us</a>
+      <a href="donate.html" class="active">Donate</a>
+    </div>
+  </header>
+  <main>
+    <section class="content-wrapper">
+      <h2>Donate</h2>
+      <div class="donation-section">
+        <p>
+          Resist.ge is a <strong>completely non-profit</strong> organization. We're doing this because we believe it's the right thing to do, so we accept no donations.
+        </p>
+        <p>
+          Instead, you can support <a href="https://www.lightmvmnt.org/%E1%83%93%E1%83%9D%E1%83%9C%E1%83%90%E1%83%AA%E1%83%98%E1%83%90-donation" target="_blank">The Light Movement</a>, which actively supports protestors in need.
+        </p>
+        <p>
+          You can also donate directly using the following details:
+        </p>
+      </div>
+      <div class="donation-details">
+        <p>PayPal: <span class="copyable" onclick="copyText('@sjajanidze')">@sjajanidze</span></p>
+        <p>Polygon USDT (Network - MATIC): <span class="copyable" onclick="copyText('0x882393586a484a4c83f38bdf922171b276ea8e8f')">0x882393586a484a4c83f38bdf922171b276ea8e8f</span></p>
+        <p>USDT (Network: BSC BEP20): <span class="copyable" onclick="copyText('0x882393586a484a4c83f38bdf922171b276ea8e8f')">0x882393586a484a4c83f38bdf922171b276ea8e8f</span></p>
+      </div>
+    </section>
+  </main>
+  <div class="bottom-bar">
+    &copy; 2024 Resist.ge. All rights reserved.
+  </div>
+  <script>
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Copied: " + text);
+      });
+    }
+  </script>
+</body>
+</html>
