@@ -265,6 +265,12 @@
     }
 
     resetAutoScroll();
+
+    // Video Controls on Click
+    const video = document.getElementById('main-video');
+    video.addEventListener('click', () => {
+      video.controls = true;
+    });
   </script>
 </body>
 </html>
