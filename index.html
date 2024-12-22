@@ -11,6 +11,7 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       background-color: #fff;
@@ -21,26 +22,32 @@
       min-height: 100vh;
       margin: 0;
     }
+
     main {
       flex: 1;
     }
+
+    /* Header */
     header {
       background-color: #fff;
       text-align: center;
       padding: 15px 4%;
     }
+
     header h1 {
       color: #d62627;
       font-size: 28px;
       font-weight: bold;
       text-transform: uppercase;
     }
+
     .header-links {
       display: flex;
       justify-content: center;
       gap: 8px;
       flex-wrap: nowrap;
     }
+
     .header-links a {
       color: #d62627;
       text-decoration: none;
@@ -49,9 +56,12 @@
       padding-bottom: 5px;
       cursor: pointer;
     }
+
     .header-links a.active {
       border-bottom: 2px solid #d62627;
     }
+
+    /* Content Wrapper */
     .content-wrapper {
       display: none;
       width: 90%;
@@ -61,15 +71,96 @@
       padding: 15px 4%;
       color: #666;
     }
+
     .content-wrapper.visible {
       display: block;
     }
+
+    /* Aspect Ratio Container */
+    .aspect-ratio-box {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .aspect-ratio-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     video, img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       background-color: black;
     }
+
+    .video-description {
+      margin-top: 20px;
+    }
+
+    /* Carousel */
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      aspect-ratio: 16 / 9;
+      background-color: black;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: black;
+    }
+
+    /* Carousel Description */
+    .carousel-description {
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+      margin: 10px 0;
+    }
+
+    /* Dots */
+    .carousel-dots {
+      text-align: center;
+      margin: 5px 0;
+    }
+
+    .dot {
+      height: 8px;
+      width: 8px;
+      margin: 0 5px;
+      background-color: grey;
+      display: inline-block;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #d62627;
+    }
+
+    /* Bottom Bar */
     .bottom-bar {
       background-color: #fff;
       color: #d62627;
@@ -80,6 +171,7 @@
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <h1>The Georgian Resistance</h1>
     <div class="header-links">
@@ -89,21 +181,72 @@
       <a href="donate.html">Donate</a>
     </div>
   </header>
+
+  <!-- Main Content -->
   <main>
+    <!-- Home -->
     <section id="home" class="content-wrapper visible">
       <div class="aspect-ratio-box">
-        <video id="main-video" autoplay muted loop playsinline preload="auto">
-          <source src="hqvideo.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        <div class="aspect-ratio-content">
+          <video id="main-video" autoplay muted loop playsinline preload="auto">
+            <source src="hqvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
       <p class="video-description">
         <i>“But you can't kill me, Lord Tyrant. I represent that one thing you've never been able to kill, no matter how hard you try. I am hope.”</i>
       </p>
+
+      <!-- Carousel -->
+      <div class="carousel-container">
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-slide" data-description="Image 1 Description">
+            <img src="1.png" alt="Image 1" loading="lazy">
+          </div>
+          <div class="carousel-slide" data-description="Image 2 Description">
+            <img src="2.png" alt="Image 2" loading="lazy">
+          </div>
+          <div class="carousel-slide" data-description="Image 3 Description">
+            <img src="3.jpg" alt="Image 3" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-description" id="carousel-description">Image 1 Description</div>
+      <div class="carousel-dots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+      </div>
     </section>
   </main>
+
+  <!-- Bottom Bar -->
   <div class="bottom-bar">
     &copy; 2024 Resist.ge. All rights reserved.
   </div>
+
+  <!-- Carousel Script -->
+  <script>
+    const track = document.getElementById('carousel-track');
+    const slides = Array.from(track.children);
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    const description = document.getElementById('carousel-description');
+    let currentIndex = 0;
+
+    function updateCarousel(index) {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+      description.textContent = slides[index].getAttribute('data-description');
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel(index);
+      });
+    });
+  </script>
 </body>
 </html>
