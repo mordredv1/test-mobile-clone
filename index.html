@@ -246,7 +246,7 @@
     const dots = Array.from(dotsContainer.children);
 
     function updateCarousel(index, resetTimer = false) {
-      track.style.transform = translateX(-${index * 100}%);
+      track.style.transform = `translateX(-${index * 100}%)`;
       dots.forEach(dot => dot.classList.remove('active'));
       dots[index].classList.add('active');
       description.textContent = slides[index].getAttribute('data-description');
