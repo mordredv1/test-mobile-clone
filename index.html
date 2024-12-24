@@ -200,7 +200,7 @@
       <!-- Carousel -->
       <div class="carousel-container">
         <div class="carousel-track" id="carousel-track">
-          <div class="carousel-slide" data-description="With gas masks and large water bottles, the protestors neutralize most of the tear gas thrown their way.">
+          <div class="carousel-slide" data-description="Protestors use gas masks and water bottles to mitigate the effects of tear gas.">
             <img src="1.png" alt="Image 1" loading="lazy">
           </div>
           <div class="carousel-slide" data-description="Activists decorate the capital's main Christmas tree with banners, flags and images of the injured">
@@ -233,44 +233,3 @@
     const dotsContainer = document.getElementById('carousel-dots');
     const description = document.getElementById('carousel-description');
     let currentIndex = 0;
-    let timer;
-
-    slides.forEach((_, index) => {
-      const dot = document.createElement('span');
-      dot.classList.add('dot');
-      if (index === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => updateCarousel(index, true));
-      dotsContainer.appendChild(dot);
-    });
-
-    const dots = Array.from(dotsContainer.children);
-
-    function updateCarousel(index, resetTimer = false) {
-      track.style.transform = translateX(-${index * 100}%);
-      dots.forEach(dot => dot.classList.remove('active'));
-      dots[index].classList.add('active');
-      description.textContent = slides[index].getAttribute('data-description');
-      currentIndex = index;
-      if (resetTimer) resetAutoScroll();
-    }
-
-    function autoScroll() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      updateCarousel(currentIndex);
-    }
-
-    function resetAutoScroll() {
-      clearInterval(timer);
-      timer = setInterval(autoScroll, 7000);
-    }
-
-    resetAutoScroll();
-
-    // Video Controls on Click
-    const video = document.getElementById('main-video');
-    video.addEventListener('click', () => {
-      video.controls = true;
-    });
-  </script>
-</body>
-</html>
