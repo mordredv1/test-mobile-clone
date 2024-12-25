@@ -232,7 +232,9 @@
     const slides = Array.from(track.children);
     const dotsContainer = document.getElementById('carousel-dots');
     const description = document.getElementById('carousel-description');
-    let currentIndex = 1;
+description.textContent = slides[0].getAttribute('data-description');
+
+    let currentIndex = 0;
     let timer;
 
     slides.forEach((_, index) => {
